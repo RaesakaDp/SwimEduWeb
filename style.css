@@ -1,21 +1,72 @@
+/* ========================= */
+/* THEME VARIABLES */
+/* ========================= */
+
 :root {
-  --bg: #f8fafc;
-  --text: #0f172a;
-  --card: #ffffff;
-  --primary: #2563eb;
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --card-color: #ffffff;
+  --secondary-text: #475569;
 }
 
 body.dark {
-  --bg: #0f172a;
-  --text: #f1f5f9;
-  --card: #1e293b;
-  --primary: #38bdf8;
+  --bg-color: #0f172a;
+  --text-color: #f1f5f9;
+  --card-color: #1e293b;
+  --secondary-text: #cbd5e1;
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg-color);
+  color: var(--text-color);
   transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ========================= */
+/* GLOBAL DARK MODE FIX */
+/* ========================= */
+
+section,
+.card,
+.materi-detail-box,
+.gallery-item,
+.pdf-viewer,
+.footer,
+.navbar {
+  background-color: var(--card-color);
+  color: var(--text-color);
+}
+
+/* paragraf */
+p,
+li,
+span {
+  color: var(--secondary-text);
+}
+
+/* heading */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color);
+}
+
+/* link */
+a {
+  color: inherit;
+}
+
+/* navbar khusus */
+.navbar a {
+  color: white;
+}
+
+/* materi detail */
+.materi-detail-box p {
+  color: var(--secondary-text);
 }
 
 .card, .materi-detail-box, .gallery-item, .pdf-viewer, .footer {
@@ -41,6 +92,9 @@ body {
 /* ========================= */
 /* NAVBAR PROFESSIONAL */
 /* ========================= */
+/* ========================= */
+/* NAVBAR MODERN */
+/* ========================= */
 
 .navbar {
   position: sticky;
@@ -51,86 +105,71 @@ body {
   justify-content: space-between;
   align-items: center;
 
-  padding: 15px 5%;
+  padding: 14px 5%;
 
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.92);
   backdrop-filter: blur(12px);
 
   color: white;
 }
 
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* MENU */
 .navbar ul {
   display: flex;
   gap: 25px;
   list-style: none;
 }
 
+/* LINK */
 .navbar a {
   color: white;
   text-decoration: none;
-  position: relative;
   transition: 0.3s;
 }
 
-/* underline animation */
-.navbar a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0%;
-  height: 2px;
-  background: #38bdf8;
-  transition: 0.3s;
-}
-
-.navbar a:hover::after {
-  width: 100%;
-}
-
-/* ACTIVE MENU */
-.navbar a.active {
+.navbar a:hover {
   color: #38bdf8;
 }
 
-.navbar a.active::after {
-  width: 100%;
+/* RIGHT AREA */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.materi-detail-box{
-  background:white;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  white-space:pre-line;
+/* DARK BUTTON */
+.dark-btn {
+  border: none;
+  background: rgba(255,255,255,0.12);
+
+  color: white;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: 0.3s ease;
+}
+
+.dark-btn:hover {
+  background: #38bdf8;
+  transform: scale(1.08);
 }
 
 /* ========================= */
-/* SCROLL PROGRESS BAR */
+/* HAMBURGER */
 /* ========================= */
-
-#scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 6px;
-  width: 0%;
-  z-index: 99999;
-
-  /* lebih kontras + modern */
-  background: linear-gradient(90deg, #00c6ff, #0072ff, #38bdf8);
-
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
-
-  border-radius: 0 6px 6px 0;
-
-  transition: width 0.15s ease;
-}
-
-body.dark #scroll-progress {
-  background: linear-gradient(90deg, #38bdf8, #22d3ee, #60a5fa);
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
-}
 
 /* ========================= */
 /* ANIMATED HAMBURGER ICON */
@@ -174,11 +213,155 @@ body.dark #scroll-progress {
   font-weight: bold;
 }
 
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-wrap: wrap;
+    padding: 14px 20px;
+  }
+
+  /* tampilkan hamburger */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* sembunyikan menu */
+  .navbar ul {
+    width: 100%;
+
+    display: none;
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-top: 18px;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.98);
+
+    border-radius: 16px;
+
+    animation: slideDown 0.3s ease;
+  }
+
+  /* menu aktif */
+  .navbar ul.active {
+    display: flex;
+  }
+
+  /* link mobile */
+  .navbar ul li a {
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .navbar ul li a:hover {
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* tombol kanan */
+  .nav-right {
+    margin-left: auto;
+  }
+
+}
+
+/* ========================= */
+/* ANIMATION */
+/* ========================= */
+
+@keyframes slideDown {
+
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.materi-detail-box{
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  white-space:pre-line;
+}
+
+/* ========================= */
+/* SCROLL PROGRESS BAR */
+/* ========================= */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 0%;
+  z-index: 99999;
+
+  /* lebih kontras + modern */
+  background: linear-gradient(90deg, #00c6ff, #0072ff, #38bdf8);
+
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+
+  border-radius: 0 6px 6px 0;
+
+  transition: width 0.15s ease;
+}
+
+body.dark #scroll-progress {
+  background: linear-gradient(90deg, #38bdf8, #22d3ee, #60a5fa);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+}
+
+
+/* ========================= */
+/* DARK MODE BUTTON */
+/* ========================= */
+
 .dark-btn {
-  padding: 10px 18px;
   border: none;
-  border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  color: white;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
   cursor: pointer;
+
+  font-size: 18px;
+
+  transition: 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-btn:hover {
+  transform: rotate(15deg) scale(1.1);
+  background: #38bdf8;
+}
+
+/* mobile fix */
+@media (max-width: 768px) {
+
+  .dark-btn {
+    margin-left: auto;
+  }
+
 }
 
 header {
