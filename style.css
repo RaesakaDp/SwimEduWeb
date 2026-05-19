@@ -22,28 +22,115 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+/* ========================= */
+/* NAVBAR PROFESSIONAL */
+/* ========================= */
 
-nav {
+.navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 5%;
-  background: #0f172a;
+
+  padding: 15px 5%;
+
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+
   color: white;
 }
 
-nav ul {
+.navbar ul {
   display: flex;
   gap: 25px;
   list-style: none;
 }
 
-nav a {
+.navbar a {
   color: white;
   text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* underline animation */
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #38bdf8;
+  transition: 0.3s;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ACTIVE MENU */
+.navbar a.active {
+  color: #38bdf8;
+}
+
+.navbar a.active::after {
+  width: 100%;
+}
+
+/* ========================= */
+/* SCROLL PROGRESS BAR */
+/* ========================= */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(to right, #06b6d4, #2563eb);
+  z-index: 9999;
+  transition: width 0.2s ease;
+}
+
+/* ========================= */
+/* ANIMATED HAMBURGER ICON */
+/* ========================= */
+
+.menu-toggle {
+  display: none;
+  width: 45px;
+  height: 40px;
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: white;
+  margin: 6px 0;
+  transition: 0.4s;
+  border-radius: 5px;
+}
+
+/* animasi jadi X */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .logo {
@@ -371,5 +458,34 @@ footer p {
 
   .video iframe {
     height: 250px;
+  }
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar ul {
+    position: absolute;
+    top: 70px;
+    left: 5%;
+    right: 5%;
+
+    flex-direction: column;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+
+    padding: 15px;
+    border-radius: 16px;
+
+    display: none;
+  }
+
+  .navbar ul.active {
+    display: flex;
   }
 }

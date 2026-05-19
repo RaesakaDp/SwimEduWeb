@@ -8,24 +8,30 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="scroll-progress"></div>
 
   <!-- Navbar -->
-  <nav>
-    <div class="logo">🏊 SwimEdu</div>
+<nav class="navbar" id="navbar">
 
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#materi">Materi</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="#gallery">Galeri</a></li>
-      <li><a href="#ebook">E-Book</a></li>
-    </ul>
+  <div class="logo">🏊 SwimEdu</div>
 
-    <button onclick="darkMode()" class="dark-btn">
-      🌙 Dark Mode
-    </button>
-  </nav>
+  <ul id="nav-menu">
+    <li><a href="#home" class="nav-link">Home</a></li>
+    <li><a href="#materi" class="nav-link">Materi</a></li>
+    <li><a href="#video" class="nav-link">Video</a></li>
+    <li><a href="#ebook" class="nav-link">E-Book</a></li>
+    <li><a href="#quiz" class="nav-link">Quiz</a></li>
+    <li><a href="#gallery" class="nav-link">Galeri</a></li>
+    
+  </ul>
+
+<button class="menu-toggle" onclick="toggleMenu(this)">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+</nav>
 
 
   <!-- Hero -->
@@ -274,8 +280,8 @@
 
         <button onclick="zoomOut()">➖ Zoom Out</button>
 
-        <a href="pdf/Project Renang - RaesakaDp.pdf" download>
-          ⬇ Download
+        <a href="pdf/E-Book.pdf" download>
+          ⬇ Baca Sekarang
         </a>
 
       </div>
@@ -288,8 +294,6 @@
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-
-
 
 
   <!-- Quiz -->
