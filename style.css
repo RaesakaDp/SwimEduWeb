@@ -89,6 +89,253 @@ a {
   max-width: 1200px;
   margin: auto;
 }
+
+/* ========================= */
+/* FILOSOFI PREMIUM SECTION */
+/* ========================= */
+
+.filosofi-section {
+
+  position: relative;
+
+  padding: 100px 5%;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #eff6ff,
+      #f8fafc
+    );
+}
+
+/* HEADER */
+.filosofi-header {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.badge-swimedu {
+
+  display: inline-block;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: rgba(37,99,235,0.1);
+
+  color: #2563eb;
+
+  font-weight: 600;
+
+  margin-bottom: 20px;
+}
+
+.filosofi-header h2 {
+
+  font-size: 42px;
+
+  margin-bottom: 20px;
+
+  color: #0f172a;
+}
+
+.filosofi-header p {
+
+  font-size: 18px;
+
+  line-height: 1.8;
+
+  color: #475569;
+}
+
+/* MAIN CARD */
+
+.filosofi-main-card {
+
+  margin-top: 60px;
+
+  background: rgba(255,255,255,0.75);
+
+  backdrop-filter: blur(14px);
+
+  border-radius: 30px;
+
+  padding: 40px;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* TEXT */
+
+.filosofi-text {
+
+  margin-bottom: 40px;
+}
+
+.filosofi-text h3 {
+
+  font-size: 30px;
+
+  margin-bottom: 20px;
+
+  color: #0f172a;
+}
+
+.filosofi-text p {
+
+  line-height: 1.9;
+
+  color: #475569;
+
+  margin-bottom: 15px;
+
+  text-align: justify;
+}
+
+/* HIGHLIGHT GRID */
+
+.filosofi-highlight {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 20px;
+}
+
+.highlight-card {
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  transition: 0.35s ease;
+
+  box-shadow:
+    0 5px 18px rgba(0,0,0,0.05);
+}
+
+.highlight-card:hover {
+
+  transform:
+    translateY(-8px);
+
+  box-shadow:
+    0 15px 30px rgba(37,99,235,0.15);
+}
+
+.highlight-card span {
+
+  font-size: 40px;
+
+  display: block;
+
+  margin-bottom: 15px;
+}
+
+.highlight-card h4 {
+
+  margin-bottom: 10px;
+
+  color: #0f172a;
+}
+
+.highlight-card p {
+
+  color: #64748b;
+
+  line-height: 1.7;
+}
+
+/* WAVES */
+
+.wave-top,
+.wave-bottom {
+
+  position: absolute;
+
+  width: 100%;
+
+  height: 80px;
+
+  left: 0;
+
+  background:
+    radial-gradient(circle at 50% 0,
+    rgba(56,189,248,0.2),
+    transparent 70%);
+}
+
+.wave-top {
+  top: 0;
+}
+
+.wave-bottom {
+  bottom: 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .filosofi-header h2 {
+    font-size: 30px;
+  }
+
+  .filosofi-main-card {
+    padding: 25px;
+  }
+
+}
+
+/* DARK MODE */
+
+body.dark .filosofi-section {
+
+  background:
+    linear-gradient(
+      180deg,
+      #0f172a,
+      #111827
+    );
+}
+
+body.dark .filosofi-main-card {
+
+  background:
+    rgba(30,41,59,0.8);
+}
+
+body.dark .highlight-card {
+
+  background:
+    #1e293b;
+}
+
+body.dark .filosofi-header h2,
+body.dark .filosofi-text h3,
+body.dark .highlight-card h4 {
+
+  color: #f1f5f9;
+}
+
+body.dark .filosofi-header p,
+body.dark .filosofi-text p,
+body.dark .highlight-card p {
+
+  color: #cbd5e1;
+}
+
 /* ========================= */
 /* NAVBAR PROFESSIONAL */
 /* ========================= */
