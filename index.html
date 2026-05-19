@@ -240,7 +240,8 @@
     </div>
   </section>
 
-<!-- E-Book PDF -->
+<!-- ============E-Book============= -->
+
 <section id="ebook" class="ebook-section">
 
   <div class="container">
@@ -249,37 +250,46 @@
       <h2>E-Book Pembelajaran</h2>
 
       <p>
-        Peserta didik dapat membaca materi renang secara mandiri melalui e-book berikut.
+        Baca materi pembelajaran renang secara interaktif.
       </p>
     </div>
 
 
-    <div class="ebook-box">
+    <div class="pdf-viewer">
 
-      <iframe
-        src="pdf/Project Renang - RaesakaDp.pdf"
-        width="100%"
-        height="600px">
-      </iframe>
+      <div class="pdf-toolbar">
 
+        <button onclick="prevPage()">⬅ Prev</button>
 
-      <div class="ebook-button">
+        <span>
+          Halaman
+          <span id="page-num"></span>
+          /
+          <span id="page-count"></span>
+        </span>
 
-        <a href="pdf/Project Renang - RaesakaDp.pdf" target="_blank">
-          📖 Buka Fullscreen
-        </a>
+        <button onclick="nextPage()">Next ➡</button>
 
+        <button onclick="zoomIn()">➕ Zoom In</button>
+
+        <button onclick="zoomOut()">➖ Zoom Out</button>
 
         <a href="pdf/Project Renang - RaesakaDp.pdf" download>
-          ⬇ Download PDF
+          ⬇ Download
         </a>
 
       </div>
+
+      <canvas id="pdf-render"></canvas>
 
     </div>
 
   </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+
 
 
   <!-- Quiz -->

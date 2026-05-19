@@ -112,3 +112,89 @@ function resetTimer() {
 
   document.getElementById('timer').innerHTML = '00:00';
 }
+
+// =========================
+// PDF VIEWER MODERN
+// =========================
+
+const url = 'pdf/ebook-renang.pdf';
+
+let pdfDoc = null,
+    pageNum = 1,
+    pageIsRendering = false,
+    pageNumIsPending = null,
+    scale = 1.3,
+    canvas = document.querySelector('#pdf-render'),
+    ctx = canvas.getContext('2d');
+
+const renderPage = num => {
+
+  pageIsRendering = true;
+
+  pdfDoc.getPage(num).then(page => {
+
+    const viewport = page.getViewport({ scale });
+
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    const renderCtx = {
+      canvasContext: ctx,
+      viewport
+    };
+
+    page.render(renderCtx).promise.then(() => {
+
+      pageIsRendering = false;
+
+      if(pageNumIsPending !== null) {
+        renderPage(pageNumIsPending);
+        pageNumIsPending = null;
+      }
+    });
+
+    document.querySelector('#page-num').textContent = num;
+  });
+};
+
+const queueRenderPage = num => {
+
+  if(pageIsRendering) {
+    pageNumIsPending = num;
+  } else {
+    renderPage(num);
+  }
+};
+
+function prevPage() {
+
+  if(pageNum <= 1) {
+    return;
+  }
+
+  pageNum--;
+  queueRenderPage(pageNum);
+}
+
+function nextPage() {
+
+  if(pageNum >= pdfDoc.numPages) {
+    return;
+  }
+
+  pageNum++;
+  queueRenderPage(pageNum);
+}
+
+function zoomIn() {
+  scale += 0.2;
+  renderPage(pageNum);
+}
+
+function zoomOut() {
+
+  if(scale <= 0.6) return;
+
+  scale -= 0.2;
+  renderPage(pageNum);
+}
