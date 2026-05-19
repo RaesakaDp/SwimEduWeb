@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Pembelajaran Renang</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">🏊 SwimEdu</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#materi">Materi</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#gallery">Galeri</a></li>
+    </ul>
+
+    <button onclick="darkMode()" class="dark-btn">
+      🌙 Dark Mode
+    </button>
+  </nav>
+
+
+  <!-- Hero -->
+  <header id="home">
+    <div class="container hero">
+
+      <div class="hero-text">
+        <h1>
+          Media Pembelajaran Renang Fase C–D
+        </h1>
+
+        <p>
+          Website interaktif untuk membantu guru PJOK menyampaikan materi renang secara modern, menarik, dan mudah dipahami peserta didik.
+        </p>
+
+        <a href="#materi" class="btn btn-primary">
+          Mulai Belajar
+        </a>
+
+        <a href="#quiz" class="btn btn-secondary">
+          Kerjakan Quiz
+        </a>
+      </div>
+
+      <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200&auto=format&fit=crop" alt="renang">
+
+    </div>
+  </header>
+
+
+  <!-- Tentang -->
+  <section>
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Tentang Website</h2>
+        <p>
+          Media pembelajaran PJOK berbasis website interaktif.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <span>🎯</span>
+          <h3>Tujuan Pembelajaran</h3>
+          <p>
+            Membantu siswa memahami teknik dasar renang.
+          </p>
+        </div>
+
+        <div class="card">
+          <span>📚</span>
+          <h3>Materi Interaktif</h3>
+          <p>
+            Terdapat video, gambar, dan quiz menarik.
+          </p>
+        </div>
+
+        <div class="card">
+          <span>⚡</span>
+          <h3>Mudah Digunakan</h3>
+          <p>
+            Dapat diakses langsung melalui browser.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Materi -->
+  <section class="materi" id="materi">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Materi Pembelajaran</h2>
+        <p>
+          Materi disusun sesuai capaian pembelajaran PJOK fase C–D.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <span>🏊</span>
+          <h3>Pengenalan Renang</h3>
+          <p>
+            Mengenal manfaat olahraga renang, aturan keselamatan, dan perlengkapan dasar.
+          </p>
+
+          <ul class="materi-list">
+            <li>• Manfaat renang bagi kesehatan</li>
+            <li>• Aturan keselamatan di kolam</li>
+            <li>• Peralatan renang</li>
+          </ul>
+
+          <button onclick="showMateri('Pengenalan Renang')">
+            Lihat Materi
+          </button>
+        </div>
+
+
+        <div class="card">
+          <span>🌊</span>
+          <h3>Teknik Gaya Bebas</h3>
+          <p>
+            Mempelajari teknik dasar renang gaya bebas secara bertahap.
+          </p>
+
+          <ul class="materi-list">
+            <li>• Posisi tubuh</li>
+            <li>• Gerakan kaki flutter kick</li>
+            <li>• Gerakan lengan</li>
+            <li>• Teknik pernapasan</li>
+          </ul>
+
+          <button onclick="showMateri('Teknik Gaya Bebas')">
+            Lihat Materi
+          </button>
+        </div>
+
+
+        <div class="card">
+          <span>💪</span>
+          <h3>Latihan Kebugaran</h3>
+          <p>
+            Aktivitas latihan fisik untuk mendukung kemampuan berenang.
+          </p>
+
+          <ul class="materi-list">
+            <li>• Pemanasan</li>
+            <li>• Latihan koordinasi</li>
+            <li>• Latihan daya tahan</li>
+            <li>• Pendinginan</li>
+          </ul>
+
+          <button onclick="showMateri('Latihan Kebugaran')">
+            Lihat Materi
+          </button>
+        </div>
+
+
+        <div class="card">
+          <span>🛟</span>
+          <h3>Keselamatan Air</h3>
+          <p>
+            Memahami pentingnya keselamatan saat melakukan aktivitas air.
+          </p>
+
+          <ul class="materi-list">
+            <li>• Teknik mengapung</li>
+            <li>• Masuk kolam dengan aman</li>
+            <li>• Aturan keselamatan</li>
+            <li>• Pertolongan sederhana</li>
+          </ul>
+
+          <button onclick="showMateri('Keselamatan Air')">
+            Lihat Materi
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Video -->
+  <section id="video">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Video Pembelajaran</h2>
+        <p>
+          Video pembelajaran interaktif untuk membantu siswa memahami teknik renang.
+        </p>
+      </div>
+
+      <div class="video-grid">
+
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/5HLW2AI1Ink" allowfullscreen></iframe>
+          <h3>Teknik Dasar Renang Gaya Bebas</h3>
+          <p>
+            Penjelasan posisi tubuh, gerakan kaki, dan koordinasi tangan.
+          </p>
+        </div>
+
+
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/s2h0tFWwqFc" allowfullscreen></iframe>
+          <h3>Latihan Pernapasan Renang</h3>
+          <p>
+            Teknik mengambil napas yang benar saat berenang.
+          </p>
+        </div>
+
+
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/JghqyliWwb4" allowfullscreen></iframe>
+          <h3>Keselamatan di Air</h3>
+          <p>
+            Materi keselamatan dasar dan cara menjaga keamanan di kolam renang.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Quiz -->
+  <section class="quiz" id="quiz">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Quiz Interaktif</h2>
+        <p>
+          Jawab pertanyaan berikut untuk menguji pemahamanmu.
+        </p>
+      </div>
+
+      <div class="quiz-box">
+
+        <h3 id="question">
+          Apa fungsi teknik pernapasan dalam renang gaya bebas?
+        </h3>
+
+        <button onclick="checkAnswer('a')">
+          Menjaga ritme dan daya tahan berenang
+        </button>
+
+        <button onclick="checkAnswer('b')">
+          Mempercepat lompatan
+        </button>
+
+        <button onclick="checkAnswer('c')">
+          Mengurangi gerakan kaki
+        </button>
+
+        <button onclick="checkAnswer('d')">
+          Mempermudah start
+        </button>
+
+        <h2 id="score">Skor : 0</h2>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Stopwatch -->
+  <section>
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Stopwatch Latihan</h2>
+      </div>
+
+      <div class="timer-box">
+
+        <h1 id="timer">00:00</h1>
+
+        <div>
+          <button onclick="startTimer()">Start</button>
+          <button onclick="stopTimer()">Stop</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Galeri -->
+  <section id="gallery">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Galeri Aktivitas</h2>
+      </div>
+
+      <div class="gallery">
+
+        <img src="https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8?q=80&w=1200&auto=format&fit=crop">
+
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop">
+
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200&auto=format&fit=crop">
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <h2>Website Pembelajaran Renang</h2>
+
+    <p>
+      Media pembelajaran PJOK berbasis website modern dan interaktif.
+    </p>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
