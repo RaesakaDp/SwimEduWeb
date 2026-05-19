@@ -1,14 +1,27 @@
-javascript
 // =========================
-// DARK MODE
+// DARK MODE SYNC GLOBAL
 // =========================
 
-function darkMode() {
-  document.body.classList.toggle('dark');
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
 }
 
-function toggleMenu() {
-  document.getElementById("nav-menu").classList.toggle("active");
+// load theme saat halaman dibuka
+const savedTheme = localStorage.getItem("theme");
+applyTheme(savedTheme);
+
+function darkMode() {
+  if (document.body.classList.contains("dark")) {
+    document.body.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }
 }
 
 // =========================

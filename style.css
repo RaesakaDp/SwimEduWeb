@@ -1,3 +1,29 @@
+:root {
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --card: #ffffff;
+  --primary: #2563eb;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --card: #1e293b;
+  --primary: #38bdf8;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.card, .materi-detail-box, .gallery-item, .pdf-viewer, .footer {
+  background: var(--card);
+  transition: 0.4s ease;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -6,16 +32,6 @@
   scroll-behavior: smooth;
 }
 
-body {
-  background: #f0f9ff;
-  color: #1e293b;
-  transition: 0.3s;
-}
-
-.dark {
-  background: #0f172a;
-  color: white;
-}
 
 .container {
   width: 90%;
@@ -81,6 +97,14 @@ body {
   width: 100%;
 }
 
+.materi-detail-box{
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  white-space:pre-line;
+}
+
 /* ========================= */
 /* SCROLL PROGRESS BAR */
 /* ========================= */
@@ -89,11 +113,23 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 4px;
+  height: 6px;
   width: 0%;
-  background: linear-gradient(to right, #06b6d4, #2563eb);
-  z-index: 9999;
-  transition: width 0.2s ease;
+  z-index: 99999;
+
+  /* lebih kontras + modern */
+  background: linear-gradient(90deg, #00c6ff, #0072ff, #38bdf8);
+
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+
+  border-radius: 0 6px 6px 0;
+
+  transition: width 0.15s ease;
+}
+
+body.dark #scroll-progress {
+  background: linear-gradient(90deg, #38bdf8, #22d3ee, #60a5fa);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
 }
 
 /* ========================= */
@@ -251,6 +287,112 @@ section {
   line-height: 1.8;
 }
 
+.media-box iframe {
+  border-radius: 12px;
+}
+
+
+/* ========================= */
+/* JUDUL DETAIL MATERI */
+/* ========================= */
+
+#judul-materi {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: center;
+  margin: 30px 0 20px;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+/* garis bawah dekoratif */
+#judul-materi::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #2563eb, #38bdf8);
+  margin: 12px auto 0;
+  border-radius: 10px;
+}
+
+/* versi mobile */
+@media (max-width: 768px) {
+  #judul-materi {
+    font-size: 24px;
+  }
+
+  #judul-materi::after {
+    width: 60px;
+    height: 3px;
+  }
+}
+
+.nav-materi button {
+  padding: 10px 15px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-materi button:hover {
+  background: #1d4ed8;
+}
+
+/* ========================= */
+/* DETAIL MATERI TYPOGRAPHY */
+/* ========================= */
+
+.materi-detail-box {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.materi-detail-box p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #334155;
+  text-align: justify;
+  white-space: pre-line;
+  letter-spacing: 0.2px;
+  margin-bottom: 15px;
+}
+
+.materi-detail-box h2,
+.materi-detail-box h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.materi-detail-box ul {
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.materi-detail-box li {
+  margin-bottom: 8px;
+}
+
+/* agar lebih nyaman dibaca di HP */
+@media (max-width: 768px) {
+  .materi-detail-box {
+    padding: 18px;
+  }
+
+  .materi-detail-box p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -372,6 +514,54 @@ section {
 }
 
 /* ========================= */
+/* GALERI RENANG */
+/* ========================= */
+
+.gallery {
+  padding: 60px 0;
+  background: #f8fafc;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: 0.3s;
+  background: white;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+/* hover effect */
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .gallery-item img {
+    height: 180px;
+  }
+}
+
+/* ========================= */
 /* MODERN PDF VIEWER */
 /* ========================= */
 
@@ -430,6 +620,95 @@ footer p {
   margin-top: 10px;
   color: #94a3b8;
 }
+
+/* ========================= */
+/* FOOTER MODERN */
+/* ========================= */
+
+.footer {
+  background: #0f172a;
+  color: white;
+  padding: 50px 5% 20px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.footer h3, .footer h4 {
+  margin-bottom: 15px;
+}
+
+.footer a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: #38bdf8;
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #1e293b;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* ========================= */
+.dev-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+
+.dev-avatar:hover {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 0 15px rgba(56,189,248,0.5);
+}
+
+.dev-info h5 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.dev-info p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 2px 0;
+}
+
+.dev-info a {
+  font-size: 12px;
+  color: #38bdf8;
+}
+
+/* hover container effect */
+.footer-container > div {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-container > div:hover {
+  transform: translateY(-5px);
+}
+
 
 @media(max-width:768px) {
 
