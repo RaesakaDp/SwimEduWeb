@@ -1,45 +1,222 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Detail Materi - SwimEdu</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
+<!-- ========================= -->
+<!-- SCROLL PROGRESS -->
+<!-- ========================= -->
+
+<div id="scroll-progress"></div>
+
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
+
 <nav class="navbar">
-  <div class="logo">🏊 SwimEdu</div>
-  <a href="index.html" style="color:white">⬅ Kembali</a>
-</nav>
 
-<div class="container" style="margin-top:30px">
+  <div class="logo">
+    🏊 SwimEdu
+  </div>
 
-  <h1 id="judul-materi">Judul Materi</h1>
+  <div class="nav-right">
 
-  <div class="materi-detail-box">
+<!-- =========================
+FIX BACK BUTTON
+========================= -->
 
-    <p id="isi-materi">
-      Loading materi...
-    </p>
+<a href="index.html" class="back-btn">
+  ⬅ Kembali
+</a>
 
-    <div class="media-box">
-
-  <img id="materi-gambar" src="" alt="Materi Image" style="width:100%; border-radius:12px; margin-top:20px; display:none;">
-
-  <div id="materi-video" style="margin-top:20px;"></div>
-
-</div>
-
-<div class="nav-materi" style="margin-top:30px; display:flex; justify-content:space-between;">
-  <button onclick="prevMateri()">⬅ Materi Sebelumnya</button>
-  <button onclick="nextMateri()">Materi Selanjutnya ➡</button>
-</div>
+    <div class="toggle-theme">
+      <input type="checkbox" id="themeToggle" />
+      <label for="themeToggle" class="toggle-switch"></label>
+    </div>
 
   </div>
 
-</div>
+</nav>
 
+
+<!-- ========================= -->
+<!-- HERO DETAIL -->
+<!-- ========================= -->
+
+<header class="materi-hero">
+
+  <div class="container">
+
+    <div class="materi-hero-content">
+
+      <span class="materi-badge">
+        📘 Materi Pembelajaran
+      </span>
+
+      <h1 id="judul-materi">
+        Judul Materi
+      </h1>
+
+      <p>
+        Pelajari materi renang interaktif dengan tampilan modern,
+        ringan, dan mudah dipahami.
+      </p>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ========================= -->
+<!-- DETAIL CONTENT -->
+<!-- ========================= -->
+
+<section class="materi-section">
+
+  <div class="container">
+
+    <div class="materi-layout">
+
+      <!-- CONTENT -->
+      <div class="materi-content">
+
+        <div class="materi-detail-box">
+
+          <div class="materi-content-text">
+
+            <p id="isi-materi">
+              Loading materi...
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- IMAGE -->
+        <div class="media-box">
+
+          <img
+            id="materi-gambar"
+            src=""
+            alt="Materi Image"
+          />
+
+        </div>
+
+
+        <!-- VIDEO -->
+        <div
+          id="materi-video"
+          class="video-wrapper">
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <div class="nav-materi">
+
+          <button
+            class="btn btn-secondary"
+            onclick="prevMateri()">
+
+            ⬅ Materi Sebelumnya
+
+          </button>
+
+          <button
+            class="btn btn-primary"
+            onclick="nextMateri()">
+
+            Materi Selanjutnya ➡
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- SIDEBAR -->
+      <aside class="materi-sidebar">
+
+        <div class="sidebar-card">
+
+          <h3>
+            📚 Navigasi Cepat
+          </h3>
+
+          <ul>
+
+            <li>
+              <a href="materi.html?id=Pengenalan%20Renang">
+                Pengenalan Renang
+              </a>
+            </li>
+
+            <li>
+              <a href="materi.html?id=Teknik%20Gaya%20Bebas">
+                Teknik Gaya Bebas
+              </a>
+            </li>
+
+            <li>
+              <a href="materi.html?id=Latihan%20Kebugaran">
+                Latihan Kebugaran
+              </a>
+            </li>
+
+            <li>
+              <a href="materi.html?id=Keselamatan%20Air">
+                Keselamatan Air
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <p>
+      © 2026 SwimEdu — Media Pembelajaran Renang Modern
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- ========================= -->
+<!-- SCRIPT -->
+<!-- ========================= -->
+
+<script src="script.js"></script>
 <script src="materi.js"></script>
 
 </body>

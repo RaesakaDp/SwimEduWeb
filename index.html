@@ -1,413 +1,484 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Pembelajaran Renang</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="style.css">
+  <title>SwimEdu — Pembelajaran Renang Modern</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PDF JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <!-- =========================
+TAMBAHKAN DI <head>
+========================= -->
+
+<link rel="icon" href="img/logo.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
+
 <body>
-<div id="scroll-progress"></div>
 
-  <!-- Navbar -->
-<nav class="navbar">
+  <!-- SCROLL PROGRESS -->
+  <div id="scroll-progress"></div>
 
-  <div class="logo">🏊 SwimEdu</div>
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
 
-  <div class="nav-right">
+    <div class="logo">
+      🏊 SwimEdu
+    </div>
 
-    <button class="menu-toggle" onclick="toggleMenu(this)">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="nav-right">
 
-    <!-- <button onclick="darkMode()" class="dark-btn">
-      🌙
-    </button> -->
+      <!-- DARK MODE -->
+      <div class="toggle-theme">
+        <input type="checkbox" id="themeToggle">
+        <label for="themeToggle" class="toggle-switch"></label>
+      </div>
 
-  </div>
+      <!-- MOBILE MENU -->
+      <button class="menu-toggle" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-  <ul id="nav-menu">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#materi">Materi</a></li>
-    <li><a href="#video">Video</a></li>
-    <li><a href="#ebook">E-Book</a></li>
-    <li><a href="#quiz">Quiz</a></li>
-    <li><a href="#gallery">Galeri</a></li>
-  </ul>
+    </div>
 
-</nav>
+    <!-- NAVIGATION -->
+    <ul id="nav-menu">
 
+      <!-- animated underline -->
+      <div class="nav-indicator"></div>
 
-  <!-- Hero -->
+      <li>
+        <a class="nav-link active" href="#home">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="#materi">
+          Materi
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="#video">
+          Video
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="#ebook">
+          E-Book
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="#quiz">
+          Quiz
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="#gallery">
+          Galeri
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+  <!-- ================= HERO ================= -->
   <header id="home">
+
     <div class="container hero">
 
       <div class="hero-text">
+
+        <span class="hero-badge">
+          Media Pembelajaran PJOK
+        </span>
+
         <h1>
-          Media Pembelajaran Renang Fase C–D
+          Pembelajaran Renang Modern untuk Fase C–D
         </h1>
 
         <p>
-          Website interaktif untuk membantu guru PJOK menyampaikan materi renang secara modern, menarik, dan mudah dipahami peserta didik.
+          Website pembelajaran interaktif berbasis digital
+          untuk membantu siswa memahami teknik dasar renang
+          dengan lebih mudah, menarik, dan modern.
         </p>
 
-        <a href="#materi" class="btn btn-primary">
-          Mulai Belajar
-        </a>
+        <div class="hero-buttons">
 
-        <a href="#quiz" class="btn btn-secondary">
-          Kerjakan Quiz
-        </a>
+          <a href="#materi" class="btn btn-primary">
+            Mulai Belajar
+          </a>
+
+          <a href="#quiz" class="btn btn-secondary">
+            Kerjakan Quiz
+          </a>
+
+        </div>
+
       </div>
 
-      <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200&auto=format&fit=crop" alt="renang">
+      <div class="hero-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200&auto=format&fit=crop"
+          alt="Renang"
+        >
+
+      </div>
 
     </div>
+
   </header>
 
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
 
-  <!-- Tentang -->
-  <section>
     <div class="container">
 
       <div class="section-title">
-        <h2>Tentang Website</h2>
+
+        <h2>
+          Tentang SwimEdu
+        </h2>
+
         <p>
-          Media pembelajaran PJOK berbasis website interaktif.
+          Platform pembelajaran renang berbasis website
+          interaktif untuk mendukung pendidikan PJOK modern.
         </p>
+
       </div>
 
       <div class="cards">
 
         <div class="card">
           <span>🎯</span>
-          <h3>Tujuan Pembelajaran</h3>
+
+          <h3>
+            Tujuan Pembelajaran
+          </h3>
+
           <p>
-            Membantu siswa memahami teknik dasar renang.
+            Membantu siswa memahami teknik dasar renang
+            dengan metode digital yang menarik.
           </p>
         </div>
 
         <div class="card">
           <span>📚</span>
-          <h3>Materi Interaktif</h3>
+
+          <h3>
+            Materi Interaktif
+          </h3>
+
           <p>
-            Terdapat video, gambar, dan quiz menarik.
+            Materi dilengkapi video, ebook,
+            dan quiz interaktif.
           </p>
         </div>
 
         <div class="card">
           <span>⚡</span>
-          <h3>Mudah Digunakan</h3>
+
+          <h3>
+            Akses Mudah
+          </h3>
+
           <p>
-            Dapat diakses langsung melalui browser.
+            Dapat digunakan di laptop,
+            tablet, maupun smartphone.
           </p>
         </div>
 
       </div>
+
     </div>
+
   </section>
 
-  <!-- ========================= -->
-<!-- FILOSOFI SWIMEDU -->
-<!-- ========================= -->
-
-<section class="filosofi-section" id="about">
-
-  <div class="wave-top"></div>
-
-  <div class="container">
-
-    <div class="filosofi-header">
-
-      <span class="badge-swimedu">
-        🌊 SwimEdu Philosophy
-      </span>
-
-      <h2>
-        Dive Into Interactive Learning
-      </h2>
-
-      <p>
-        Media pembelajaran renang berbasis digital yang
-        menggabungkan teknologi, interaktivitas, dan
-        pendidikan jasmani modern.
-      </p>
-
-    </div>
-
-    <div class="filosofi-main-card">
-
-      <div class="filosofi-text">
-
-        <h3>✨ Filosofi SwimEdu</h3>
-
-        <p>
-          <strong>SwimEdu</strong> berasal dari gabungan kata
-          <strong>“Swim”</strong> yang berarti renang dan
-          <strong>“Edu”</strong> yang berarti education.
-        </p>
-
-        <p>
-          Website ini dirancang sebagai media pembelajaran
-          interaktif yang membantu siswa belajar renang
-          dengan pengalaman digital yang lebih menarik,
-          fleksibel, dan modern.
-        </p>
-
-      </div>
-
-      <div class="filosofi-highlight">
-
-        <div class="highlight-card">
-          <span>🌊</span>
-          <h4>Adaptif</h4>
-          <p>
-            Pembelajaran fleksibel seperti karakter air.
-          </p>
-        </div>
-
-        <div class="highlight-card">
-          <span>💻</span>
-          <h4>Digital</h4>
-          <p>
-            Menghubungkan pendidikan PJOK dengan teknologi.
-          </p>
-        </div>
-
-        <div class="highlight-card">
-          <span>🧠</span>
-          <h4>Interaktif</h4>
-          <p>
-            Belajar melalui video, ebook, dan evaluasi.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="wave-bottom"></div>
-
-</section>
-
-
-
-  <!-- Materi -->
-  <section class="materi" id="materi">
+  <!-- ================= MATERI ================= -->
+  <section id="materi" class="materi">
 
     <div class="container">
 
       <div class="section-title">
-        <h2>Materi Pembelajaran</h2>
+
+        <h2>
+          Materi Pembelajaran
+        </h2>
+
         <p>
-          Materi disusun sesuai capaian pembelajaran PJOK fase C–D.
+          Materi disusun sesuai capaian pembelajaran
+          PJOK fase C–D.
         </p>
+
       </div>
 
       <div class="cards">
 
+        <!-- CARD -->
         <div class="card">
+
           <span>🏊</span>
-          <h3>Pengenalan Renang</h3>
+
+          <h3>
+            Pengenalan Renang
+          </h3>
+
           <p>
-            Mengenal manfaat olahraga renang, aturan keselamatan, dan perlengkapan dasar.
+            Mengenal manfaat, keselamatan,
+            dan perlengkapan dasar renang.
           </p>
 
-          <ul class="materi-list">
-            <li>Manfaat renang bagi kesehatan</li>
-            <li>Aturan keselamatan di kolam</li>
-            <li>Peralatan renang</li>
-          </ul>
+          <a href="materi.html?id=Pengenalan%20Renang">
+            <button>
+              Lihat Materi
+            </button>
+          </a>
 
-
-            <a href="materi.html?id=Pengenalan%20Renang">
-              <button>Lihat Materi</button>
-            </a>
         </div>
 
-
+        <!-- CARD -->
         <div class="card">
+
           <span>🌊</span>
-          <h3>Teknik Gaya Bebas</h3>
+
+          <h3>
+            Teknik Gaya Bebas
+          </h3>
+
           <p>
-            Mempelajari teknik dasar renang gaya bebas secara bertahap.
+            Mempelajari teknik dasar
+            renang gaya bebas.
           </p>
 
-          <ul class="materi-list">
-            <li>Posisi tubuh</li>
-            <li>Gerakan kaki flutter kick</li>
-            <li>Gerakan lengan</li>
-            <li>Teknik pernapasan</li>
-          </ul>
-            <a href="materi.html?id=Teknik%20Gaya%20Bebas">
-              <button>Lihat Materi</button>
-            </a>
+          <a href="materi.html?id=Teknik%20Gaya%20Bebas">
+            <button>
+              Lihat Materi
+            </button>
+          </a>
+
         </div>
 
-
+        <!-- CARD -->
         <div class="card">
-          <span>💪</span>
-          <h3>Latihan Kebugaran</h3>
-          <p>
-            Aktivitas latihan fisik untuk mendukung kemampuan berenang.
-          </p>
 
-          <ul class="materi-list">
-            <li>Pemanasan</li>
-            <li>Latihan koordinasi</li>
-            <li>Latihan daya tahan</li>
-            <li>Pendinginan</li>
-          </ul>
+          <span>💪</span>
+
+          <h3>
+            Latihan Kebugaran
+          </h3>
+
+          <p>
+            Latihan fisik untuk mendukung
+            kemampuan berenang.
+          </p>
 
           <a href="materi.html?id=Latihan%20Kebugaran">
-            <button>Lihat Materi</button>
+            <button>
+              Lihat Materi
+            </button>
           </a>
+
         </div>
 
-
+        <!-- CARD -->
         <div class="card">
+
           <span>🛟</span>
-          <h3>Keselamatan Air</h3>
+
+          <h3>
+            Keselamatan Air
+          </h3>
+
           <p>
-            Memahami pentingnya keselamatan saat melakukan aktivitas air.
+            Memahami pentingnya keselamatan
+            saat berada di air.
           </p>
 
-          <ul class="materi-list">
-            <li>Teknik mengapung</li>
-            <li>Masuk kolam dengan aman</li>
-            <li>Aturan keselamatan</li>
-            <li>Pertolongan sederhana</li>
-          </ul>
           <a href="materi.html?id=Keselamatan%20Air">
-            <button>Lihat Materi</button>
+            <button>
+              Lihat Materi
+            </button>
           </a>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
-
-  <!-- Video -->
+  <!-- ================= VIDEO ================= -->
   <section id="video">
 
     <div class="container">
 
       <div class="section-title">
-        <h2>Video Pembelajaran</h2>
+
+        <h2>
+          Video Pembelajaran
+        </h2>
+
         <p>
-          Video pembelajaran interaktif untuk membantu siswa memahami teknik renang.
+          Video interaktif untuk membantu
+          memahami teknik renang.
         </p>
+
       </div>
 
       <div class="video-grid">
 
         <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/5HLW2AI1Ink" allowfullscreen></iframe>
-          <h3>Teknik Dasar Renang Gaya Bebas</h3>
-          <p>
-            Penjelasan posisi tubuh, gerakan kaki, dan koordinasi tangan.
-          </p>
+
+        <iframe
+          src="https://www.youtube.com/embed/5HLW2AI1Ink"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+
+          <h3>
+            Teknik Dasar Gaya Bebas
+          </h3>
+
         </div>
 
-
         <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/s2h0tFWwqFc" allowfullscreen></iframe>
-          <h3>Latihan Pernapasan Renang</h3>
-          <p>
-            Teknik mengambil napas yang benar saat berenang.
-          </p>
+
+
+          <iframe
+            src="https://www.youtube.com/embed/s2h0tFWwqFc"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+
+          <h3>
+            Teknik Pernapasan
+          </h3>
+
         </div>
 
-
         <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/JghqyliWwb4" allowfullscreen></iframe>
-          <h3>Keselamatan di Air</h3>
-          <p>
-            Materi keselamatan dasar dan cara menjaga keamanan di kolam renang.
-          </p>
+
+          <iframe
+            src="https://www.youtube.com/embed/JghqyliWwb4"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+
+          <h3>
+            Keselamatan Air
+          </h3>
+
         </div>
 
       </div>
 
     </div>
+
   </section>
 
-<!-- ============E-Book============= -->
-
-<section id="ebook" class="ebook-section">
-
-  <div class="container">
-
-    <div class="section-title">
-      <h2>E-Book Pembelajaran</h2>
-
-      <p>
-        Baca materi pembelajaran renang secara interaktif.
-      </p>
-    </div>
-
-
-    <div class="pdf-viewer">
-
-      <div class="pdf-toolbar">
-
-        <button onclick="prevPage()">⬅ Prev</button>
-
-        <span>
-          Halaman
-          <span id="page-num"></span>
-          /
-          <span id="page-count"></span>
-        </span>
-
-        <button onclick="nextPage()">Next ➡</button>
-
-        <button onclick="zoomIn()">➕ Zoom In</button>
-
-        <button onclick="zoomOut()">➖ Zoom Out</button>
-
-        <a href="pdf/E-Book.pdf" download>
-          ⬇ Baca Sekarang
-        </a>
-
-      </div>
-
-      <canvas id="pdf-render"></canvas>
-
-    </div>
-
-  </div>
-</section>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-
-
-  <!-- Quiz -->
-  <section class="quiz" id="quiz">
+  <!-- ================= EBOOK ================= -->
+  <section id="ebook" class="ebook-section">
 
     <div class="container">
 
       <div class="section-title">
-        <h2>Quiz Interaktif</h2>
+
+        <h2>
+          E-Book Pembelajaran
+        </h2>
+
         <p>
-          Jawab pertanyaan berikut untuk menguji pemahamanmu.
+          Baca materi pembelajaran
+          renang secara digital.
         </p>
+
+      </div>
+
+      <div class="pdf-viewer">
+
+        <div class="pdf-toolbar">
+
+          <button onclick="prevPage()">
+            ← Prev
+          </button>
+
+          <span>
+            <span id="page-num"></span>
+            /
+            <span id="page-count"></span>
+          </span>
+
+          <button onclick="nextPage()">
+            Next →
+          </button>
+
+          <button onclick="zoomIn()">
+            +
+          </button>
+
+          <button onclick="zoomOut()">
+            -
+          </button>
+
+        </div>
+
+        <canvas id="pdf-render"></canvas>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section id="quiz" class="quiz">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          Quiz Interaktif
+        </h2>
+
+        <p>
+          Uji pemahamanmu tentang
+          materi renang.
+        </p>
+
       </div>
 
       <div class="quiz-box">
 
         <h3 id="question">
-          Apa fungsi teknik pernapasan dalam renang gaya bebas?
+          Apa fungsi teknik pernapasan
+          dalam gaya bebas?
         </h3>
 
         <button onclick="checkAnswer('a')">
-          Menjaga ritme dan daya tahan berenang
+          Menjaga ritme dan daya tahan
         </button>
 
         <button onclick="checkAnswer('b')">
@@ -422,91 +493,93 @@
           Mempermudah start
         </button>
 
-        <h2 id="score">Skor : 0</h2>
+        <h2 id="score">
+          Skor : 0
+        </h2>
 
       </div>
 
     </div>
+
   </section>
 
-
-  <!-- Stopwatch -->
-  <section>
+  <!-- ================= STOPWATCH ================= -->
+  <section id="timer-section">
 
     <div class="container">
 
       <div class="section-title">
-        <h2>Stopwatch Latihan</h2>
+
+        <h2>
+          Stopwatch Latihan
+        </h2>
+
       </div>
 
       <div class="timer-box">
 
-        <h1 id="timer">00:00</h1>
+        <h1 id="timer">
+          00:00
+        </h1>
 
-        <div>
-          <button onclick="startTimer()">Start</button>
-          <button onclick="stopTimer()">Stop</button>
-          <button onclick="resetTimer()">Reset</button>
+        <div class="timer-buttons">
+
+          <button onclick="startTimer()">
+            Start
+          </button>
+
+          <button onclick="stopTimer()">
+            Stop
+          </button>
+
+          <button onclick="resetTimer()">
+            Reset
+          </button>
+
         </div>
 
       </div>
 
     </div>
+
   </section>
 
+<!-- =========================
+FIX GALLERY HTML
+========================= -->
 
-  <!-- Galeri -->
-  </section>
-
-  <section id="gallery" class="gallery">
+<section id="gallery" class="gallery">
 
   <div class="container">
 
     <div class="section-title">
-      <h2>Galeri Renang</h2>
-      <p>Dokumentasi aktivitas pembelajaran renang siswa</p>
+      <h2>Galeri</h2>
     </div>
 
     <div class="gallery-grid">
 
       <div class="gallery-item">
-        <img src="img/1.jpeg" alt="Renang 1">
+        <img src="img/1.jpeg" alt="">
       </div>
 
       <div class="gallery-item">
-        <img src="img/12.jpeg" alt="Renang 2">
+        <img src="img/12.jpeg" alt="">
       </div>
 
       <div class="gallery-item">
-        <img src="img/3.jpeg" alt="Renang 3">
+        <img src="img/3.jpeg" alt="">
       </div>
 
       <div class="gallery-item">
-        <img src="img/4.jpeg" alt="Renang 4">
+        <img src="img/4.jpeg" alt="">
       </div>
 
       <div class="gallery-item">
-        <img src="img/7.jpeg" alt="Renang 5">
+        <img src="img/7.jpeg" alt="">
       </div>
 
       <div class="gallery-item">
-        <img src="img/6.jpeg" alt="Renang 6">
-      </div>
-
-      <div class="gallery-item">
-        <img src="img/8.jpeg" alt="Renang 7">
-      </div>
-
-      <div class="gallery-item">
-        <img src="img/11.jpeg" alt="Renang 8">
-      </div>
-
-      <div class="gallery-item">
-        <img src="img/10.jpeg" alt="Renang 9">
-      </div>
-
-      <div class="gallery-item">
-        <img src="img/9.jpeg" alt="Renang 10">
+        <img src="img/6.jpeg" alt="">
       </div>
 
     </div>
@@ -515,72 +588,22 @@
 
 </section>
 
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
 
-  <!-- Footer -->
-<footer class="footer">
+    <div class="container">
 
-  <div class="footer-container">
-
-    <!-- <div class="footer-about">
-      <h3>🏊 SwimEdu</h3>
       <p>
-        Media pembelajaran renang berbasis web interaktif untuk mendukung pembelajaran PJOK fase C–D.
+        © 2026 SwimEdu —
+        Dibuat oleh RaesakaDp
       </p>
-    </div> -->
-
-        <div class="footer-developer">
-  <h4>About Developer</h4>
-
-  <div class="dev-card">
-    <div class="dev-avatar">RD</div>
-
-    <div class="dev-info">
-      <h5>Raesaka Dwi</h5>
-      <p>Front-End Developer & Education Media Creator</p>
-
-      <a href="https://raesakadp.github.io/porto/" target="_blank">
-        🔗 Lihat Portofolio
-      </a>
-    </div>
-  </div>
-</div>
-
-    <div class="footer-links">
-      <h4>Menu</h4>
-      <a href="#materi">Materi</a>
-      <a href="#video">Video</a>
-      <a href="#quiz">Quiz</a>
-      <a href="#gallery">Galeri</a>
-      <a href="#ebook">E-Book</a>
-    </div>
-
-  
-    <div class="footer-social">
-      <h4>Social & Portofolio</h4>
-
-      <a href="https://raesakadp.github.io/porto/" target="_blank">
-        🌐 Portofolio Saya
-      </a>
-
-      <a href="https://instagram.com/kakasugus_" target="_blank">
-        📷 Instagram
-      </a>
-
-      <a href="https://github.com/RaesakaDp" target="_blank">
-        💻 GitHub
-      </a>
 
     </div>
 
-  </div>
+  </footer>
 
-  <div class="footer-bottom">
-    <p>© 2026 SwimEdu | Dibuat oleh RaesakaDp</p>
-  </div>
-
-</footer>
-
-
+  <!-- JS -->
   <script src="script.js"></script>
+
 </body>
 </html>

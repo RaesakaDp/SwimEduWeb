@@ -1,309 +1,441 @@
-// =========================
-// DARK MODE SYNC GLOBAL
-// =========================
+// ========================================
+// SWIMEDU MODERN SCRIPT CLEAN VERSION
+// ========================================
 
-function applyTheme(theme) {
-  if (theme === "dark") {
-    document.body.classList.add("dark");
-  } else {
-    document.body.classList.remove("dark");
+
+// ========================================
+// MODERN DARK MODE
+// ========================================
+
+const themeToggle = document.getElementById("themeToggle");
+
+function setTheme(theme) {
+  document.body.classList.toggle("dark", theme === "dark");
+
+  if (themeToggle) {
+    themeToggle.checked = theme === "dark";
   }
+
+  localStorage.setItem("theme", theme);
 }
 
-// load theme saat halaman dibuka
-const savedTheme = localStorage.getItem("theme");
-applyTheme(savedTheme);
+// load saved theme
+const savedTheme = localStorage.getItem("theme") || "light";
+setTheme(savedTheme);
 
-function darkMode() {
-  if (document.body.classList.contains("dark")) {
-    document.body.classList.remove("dark");
-    localStorage.setItem("theme", "light");
-  } else {
-    document.body.classList.add("dark");
-    localStorage.setItem("theme", "dark");
-  }
-}
-
-// =========================
-// NAVBAR MOBILE TOGGLE
-// =========================
-
-function toggleMenu() {
-  document.getElementById("nav-menu").classList.toggle("active");
-}
-
-
-// auto close ketika klik menu (mobile UX)
-document.querySelectorAll(".nav-link").forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("nav-menu").classList.remove("active");
+// toggle theme
+if (themeToggle) {
+  themeToggle.addEventListener("change", () => {
+    const newTheme = themeToggle.checked ? "dark" : "light";
+    setTheme(newTheme);
   });
-});
+}
 
-// =========================
-// ANIMATED MENU TOGGLE
-// =========================
+
+// ========================================
+// MOBILE MENU TOGGLE
+// ========================================
 
 function toggleMenu(btn) {
-  document.getElementById("nav-menu").classList.toggle("active");
-  btn.classList.toggle("active");
+
+  const navMenu = document.getElementById("nav-menu");
+
+  navMenu.classList.toggle("active");
+
+  if (btn) {
+    btn.classList.toggle("active");
+  }
 }
 
-// auto close menu + reset icon
+// auto close mobile menu
 document.querySelectorAll(".nav-link").forEach(link => {
+
   link.addEventListener("click", () => {
-    document.getElementById("nav-menu").classList.remove("active");
 
-    const btn = document.querySelector(".menu-toggle");
-    if (btn) btn.classList.remove("active");
+    document.getElementById("nav-menu")
+      .classList.remove("active");
+
+    document.querySelector(".menu-toggle")
+      ?.classList.remove("active");
   });
-});
 
-// =========================
-// SCROLL PROGRESS BAR
-// =========================
-
-window.addEventListener("scroll", () => {
-  const scrollTop = document.documentElement.scrollTop;
-  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (scrollTop / scrollHeight) * 100;
-
-  document.getElementById("scroll-progress").style.width = scrolled + "%";
 });
 
 
-// =========================
-// ACTIVE MENU SCROLL
-// =========================
+// ========================================
+// APPLE STYLE ACTIVE NAVIGATION
+// ========================================
 
-const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("section, header");
+const indicator = document.querySelector(".nav-indicator");
 
-window.addEventListener("scroll", () => {
+// move underline indicator
+function moveIndicator(link) {
 
-  let current = "";
+  if (!indicator || !link) return;
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
+  indicator.style.width = `${link.offsetWidth}px`;
 
-    if (pageYOffset >= sectionTop - 80) {
-      current = section.getAttribute("id");
-    }
-  });
+  indicator.style.transform =
+    `translateX(${link.offsetLeft}px)`;
+}
+
+// active link system
+function setActiveLink(id) {
 
   navLinks.forEach(link => {
+
     link.classList.remove("active");
 
-    if (link.getAttribute("href") === "#" + current) {
+    if (link.getAttribute("href") === `#${id}`) {
+
       link.classList.add("active");
+
+      moveIndicator(link);
     }
   });
+}
+
+// smooth observer
+const observer = new IntersectionObserver(
+
+  (entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        setActiveLink(entry.target.id);
+      }
+    });
+
+  },
+
+  {
+    threshold: 0.55
+  }
+);
+
+// observe sections
+sections.forEach(section => {
+
+  if (section.id) {
+    observer.observe(section);
+  }
+
+});
+
+// first load
+window.addEventListener("load", () => {
+
+  const activeLink =
+    document.querySelector(".nav-link.active");
+
+  if (activeLink) {
+    moveIndicator(activeLink);
+  }
+
+});
+
+// responsive resize
+window.addEventListener("resize", () => {
+
+  const activeLink =
+    document.querySelector(".nav-link.active");
+
+  if (activeLink) {
+    moveIndicator(activeLink);
+  }
 
 });
 
 
-// =========================
-// QUIZ INTERAKTIF
-// =========================
+// ========================================
+// SCROLL PROGRESS BAR
+// ========================================
+
+window.addEventListener("scroll", () => {
+
+  const progress =
+    document.getElementById("scroll-progress");
+
+  if (!progress) return;
+
+  const scrollTop =
+    document.documentElement.scrollTop;
+
+  const scrollHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const percent =
+    (scrollTop / scrollHeight) * 100;
+
+  progress.style.width = percent + "%";
+});
+
+
+// ========================================
+// QUIZ SYSTEM
+// ========================================
 
 let skor = 0;
+let nomorSoal = 0;
 
 const soalQuiz = [
+
   {
-    pertanyaan: 'Apa fungsi teknik pernapasan dalam renang gaya bebas?',
-    benar: 'a'
+    pertanyaan:
+      "Apa fungsi teknik pernapasan dalam renang gaya bebas?",
+
+    jawaban: {
+      a: "Menjaga ritme dan daya tahan berenang",
+      b: "Mempercepat lompatan",
+      c: "Mengurangi gerakan kaki",
+      d: "Mempermudah start"
+    },
+
+    benar: "a"
   },
+
   {
-    pertanyaan: 'Gerakan kaki pada gaya bebas disebut?',
-    benar: 'b'
+    pertanyaan:
+      "Gerakan kaki pada gaya bebas disebut?",
+
+    jawaban: {
+      a: "Scissor kick",
+      b: "Flutter kick",
+      c: "Butterfly kick",
+      d: "Frog kick"
+    },
+
+    benar: "b"
   },
+
   {
-    pertanyaan: 'Apa tujuan pemanasan sebelum berenang?',
-    benar: 'c'
+    pertanyaan:
+      "Apa tujuan pemanasan sebelum berenang?",
+
+    jawaban: {
+      a: "Melemaskan otot",
+      b: "Mengurangi fokus",
+      c: "Menghindari cedera",
+      d: "Mempercepat lelah"
+    },
+
+    benar: "c"
   }
+
 ];
 
-let nomorSoal = 0;
+// render soal
+function renderQuiz() {
+
+  const q = soalQuiz[nomorSoal];
+
+  document.getElementById("question")
+    .innerText = q.pertanyaan;
+
+  const buttons =
+    document.querySelectorAll(".quiz-option");
+
+  ["a", "b", "c", "d"].forEach((opt, i) => {
+
+    if (buttons[i]) {
+      buttons[i].innerText = q.jawaban[opt];
+    }
+
+  });
+}
+
+// =========================
+// QUIZ BUTTON FIX
+// GANTI FUNCTION checkAnswer
+// =========================
 
 function checkAnswer(jawaban) {
 
+  const buttons = document.querySelectorAll(".quiz-box button");
+
+  buttons.forEach(btn => {
+    btn.disabled = true;
+  });
+
   if (jawaban === soalQuiz[nomorSoal].benar) {
-
     skor += 10;
-
-    alert('Jawaban Benar 🎉');
-
-  } else {
-
-    alert('Jawaban Salah 😅');
   }
 
-  document.getElementById('score').innerHTML =
-    'Skor : ' + skor;
+  document.getElementById("score").innerText =
+    "Skor : " + skor;
 
-  nomorSoal++;
+  setTimeout(() => {
 
-  if (nomorSoal < soalQuiz.length) {
+    nomorSoal++;
 
-    document.getElementById('question').innerHTML =
-      soalQuiz[nomorSoal].pertanyaan;
+    if (nomorSoal < soalQuiz.length) {
 
-  } else {
+      renderQuiz();
 
-    document.getElementById('question').innerHTML =
-      'Quiz Selesai 🎉';
+      buttons.forEach(btn => {
+        btn.disabled = false;
+      });
+
+    } else {
+
+      document.getElementById("question").innerText =
+        "Quiz Selesai 🎉";
+    }
+
+  }, 700);
+}
+
+// auto render first question
+window.addEventListener("DOMContentLoaded", () => {
+
+  if (document.getElementById("question")) {
+    renderQuiz();
   }
-}
+
+});
 
 
-// =========================
-// POPUP MATERI
-// =========================
-
-function showMateri(materi) {
-  alert('Anda membuka materi: ' + materi);
-}
-
-
-// =========================
+// ========================================
 // STOPWATCH
-// =========================
+// ========================================
 
 let detik = 0;
 let menit = 0;
-let interval;
+let interval = null;
 
 function updateTimer() {
 
   detik++;
 
-  if (detik == 60) {
+  if (detik === 60) {
+
     detik = 0;
     menit++;
+
   }
 
-  let formatMenit = menit < 10 ? '0' + menit : menit;
-  let formatDetik = detik < 10 ? '0' + detik : detik;
-
-  document.getElementById('timer').innerHTML =
-    formatMenit + ':' + formatDetik;
+  document.getElementById("timer").innerText =
+    `${String(menit).padStart(2, "0")}:${String(detik).padStart(2, "0")}`;
 }
 
 function startTimer() {
+
+  if (interval !== null) return;
+
   interval = setInterval(updateTimer, 1000);
 }
 
 function stopTimer() {
+
   clearInterval(interval);
+
+  interval = null;
 }
 
 function resetTimer() {
 
-  clearInterval(interval);
+  stopTimer();
 
   detik = 0;
   menit = 0;
 
-  document.getElementById('timer').innerHTML = '00:00';
+  document.getElementById("timer")
+    .innerText = "00:00";
 }
 
-// =========================
-// PDF VIEWER MODERN
-// =========================
+
+// ========================================
+// PDF VIEWER
+// ========================================
 
 window.addEventListener("DOMContentLoaded", () => {
 
-  const url = 'pdf/ebook-renang.pdf';
+  const url = "pdf/E-Book.pdf";
 
-  let pdfDoc = null,
-      pageNum = 1,
-      pageIsRendering = false,
-      pageNumIsPending = null,
-      scale = 1.3;
-
-  const canvas = document.querySelector('#pdf-render');
+  const canvas =
+    document.getElementById("pdf-render");
 
   if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
 
-  const renderPage = num => {
+  let pdfDoc = null;
+  let pageNum = 1;
+  let scale = 1.2;
 
-    pageIsRendering = true;
+  function renderPage(num) {
 
     pdfDoc.getPage(num).then(page => {
 
-      const viewport = page.getViewport({ scale });
+      const viewport =
+        page.getViewport({ scale });
 
       canvas.height = viewport.height;
       canvas.width = viewport.width;
 
-      const renderCtx = {
+      page.render({
         canvasContext: ctx,
         viewport
-      };
-
-      page.render(renderCtx).promise.then(() => {
-
-        pageIsRendering = false;
-
-        if(pageNumIsPending !== null) {
-          renderPage(pageNumIsPending);
-          pageNumIsPending = null;
-        }
       });
 
-      document.querySelector('#page-num').textContent = num;
+      document.getElementById("page-num")
+        .innerText = num;
     });
-  };
 
-  const queueRenderPage = num => {
+  }
 
-    if(pageIsRendering) {
-      pageNumIsPending = num;
-    } else {
-      renderPage(num);
-    }
-  };
+  pdfjsLib.getDocument(url).promise.then(pdf => {
 
-  window.prevPage = function() {
+    pdfDoc = pdf;
 
-    if(pageNum <= 1) return;
+    document.getElementById("page-count")
+      .innerText = pdf.numPages;
+
+    renderPage(pageNum);
+
+  });
+
+  // prev page
+  window.prevPage = function () {
+
+    if (pageNum <= 1) return;
 
     pageNum--;
-    queueRenderPage(pageNum);
-  }
 
-  window.nextPage = function() {
+    renderPage(pageNum);
+  };
 
-    if(pageNum >= pdfDoc.numPages) return;
+  // next page
+  window.nextPage = function () {
+
+    if (pageNum >= pdfDoc.numPages) return;
 
     pageNum++;
-    queueRenderPage(pageNum);
-  }
 
-  window.zoomIn = function() {
+    renderPage(pageNum);
+  };
+
+  // zoom in
+  window.zoomIn = function () {
 
     scale += 0.2;
+
     renderPage(pageNum);
-  }
+  };
 
-  window.zoomOut = function() {
+  // zoom out
+  window.zoomOut = function () {
 
-    if(scale <= 0.6) return;
+    if (scale <= 0.6) return;
 
     scale -= 0.2;
-    renderPage(pageNum);
-  }
-
-  pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
-
-    pdfDoc = pdfDoc_;
-
-    document.querySelector('#page-count').textContent =
-      pdfDoc.numPages;
 
     renderPage(pageNum);
-  });
+  };
 
 });
