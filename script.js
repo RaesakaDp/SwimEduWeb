@@ -1,5 +1,6 @@
 // ========================================
-// SWIMEDU MODERN SCRIPT CLEAN VERSION
+// SWIMEDU MODERN SCRIPT FINAL VERSION
+// CLEAN + SAFE + OPTIMIZED
 // ========================================
 
 
@@ -10,7 +11,11 @@
 const themeToggle = document.getElementById("themeToggle");
 
 function setTheme(theme) {
-  document.body.classList.toggle("dark", theme === "dark");
+
+  document.body.classList.toggle(
+    "dark",
+    theme === "dark"
+  );
 
   if (themeToggle) {
     themeToggle.checked = theme === "dark";
@@ -20,15 +25,23 @@ function setTheme(theme) {
 }
 
 // load saved theme
-const savedTheme = localStorage.getItem("theme") || "light";
+const savedTheme =
+  localStorage.getItem("theme") || "light";
+
 setTheme(savedTheme);
 
-// toggle theme
+// toggle event
 if (themeToggle) {
+
   themeToggle.addEventListener("change", () => {
-    const newTheme = themeToggle.checked ? "dark" : "light";
+
+    const newTheme =
+      themeToggle.checked ? "dark" : "light";
+
     setTheme(newTheme);
+
   });
+
 }
 
 
@@ -38,7 +51,10 @@ if (themeToggle) {
 
 function toggleMenu(btn) {
 
-  const navMenu = document.getElementById("nav-menu");
+  const navMenu =
+    document.getElementById("nav-menu");
+
+  if (!navMenu) return;
 
   navMenu.classList.toggle("active");
 
@@ -48,15 +64,19 @@ function toggleMenu(btn) {
 }
 
 // auto close mobile menu
-document.querySelectorAll(".nav-link").forEach(link => {
+document.querySelectorAll(".nav-link")
+.forEach(link => {
 
   link.addEventListener("click", () => {
 
-    document.getElementById("nav-menu")
-      .classList.remove("active");
-
-    document.querySelector(".menu-toggle")
+    document
+      .getElementById("nav-menu")
       ?.classList.remove("active");
+
+    document
+      .querySelector(".menu-toggle")
+      ?.classList.remove("active");
+
   });
 
 });
@@ -66,48 +86,60 @@ document.querySelectorAll(".nav-link").forEach(link => {
 // APPLE STYLE ACTIVE NAVIGATION
 // ========================================
 
-const navLinks = document.querySelectorAll(".nav-link");
-const sections = document.querySelectorAll("section, header");
-const indicator = document.querySelector(".nav-indicator");
+const navLinks =
+  document.querySelectorAll(".nav-link");
 
-// move underline indicator
+const sections =
+  document.querySelectorAll("section, header");
+
+const indicator =
+  document.querySelector(".nav-indicator");
+
+// move indicator
 function moveIndicator(link) {
 
   if (!indicator || !link) return;
 
-  indicator.style.width = `${link.offsetWidth}px`;
+  indicator.style.width =
+    `${link.offsetWidth}px`;
 
   indicator.style.transform =
     `translateX(${link.offsetLeft}px)`;
 }
 
-// active link system
+// active link
 function setActiveLink(id) {
 
   navLinks.forEach(link => {
 
     link.classList.remove("active");
 
-    if (link.getAttribute("href") === `#${id}`) {
+    if (
+      link.getAttribute("href") === `#${id}`
+    ) {
 
       link.classList.add("active");
 
       moveIndicator(link);
     }
+
   });
+
 }
 
-// smooth observer
+// intersection observer
 const observer = new IntersectionObserver(
 
-  (entries) => {
+  entries => {
 
     entries.forEach(entry => {
 
       if (entry.isIntersecting) {
 
         setActiveLink(entry.target.id);
+
       }
+
     });
 
   },
@@ -115,9 +147,10 @@ const observer = new IntersectionObserver(
   {
     threshold: 0.55
   }
+
 );
 
-// observe sections
+// observe all sections
 sections.forEach(section => {
 
   if (section.id) {
@@ -126,7 +159,7 @@ sections.forEach(section => {
 
 });
 
-// first load
+// initial load
 window.addEventListener("load", () => {
 
   const activeLink =
@@ -138,7 +171,7 @@ window.addEventListener("load", () => {
 
 });
 
-// responsive resize
+// resize fix
 window.addEventListener("resize", () => {
 
   const activeLink =
@@ -173,11 +206,47 @@ window.addEventListener("scroll", () => {
     (scrollTop / scrollHeight) * 100;
 
   progress.style.width = percent + "%";
+
+}, { passive: true });
+
+
+// ========================================
+// REVEAL ANIMATION
+// ========================================
+
+const revealElements = document.querySelectorAll(
+  ".card, .gallery-item, .video-card, .quiz-box, .materi-card"
+);
+
+const revealObserver = new IntersectionObserver(
+
+  entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("show");
+
+      }
+
+    });
+
+  },
+
+  {
+    threshold: 0.15
+  }
+
+);
+
+revealElements.forEach(el => {
+  revealObserver.observe(el);
 });
 
 
 // ========================================
-// QUIZ SYSTEM
+// DUOLINGO QUIZ SYSTEM
 // ========================================
 
 let skor = 0;
@@ -190,10 +259,10 @@ const soalQuiz = [
       "Apa fungsi teknik pernapasan dalam renang gaya bebas?",
 
     jawaban: {
-      a: "Menjaga ritme dan daya tahan berenang",
+      a: "Menjaga ritme dan daya tahan",
       b: "Mempercepat lompatan",
       c: "Mengurangi gerakan kaki",
-      d: "Mempermudah start"
+      d: "Membantu start"
     },
 
     benar: "a"
@@ -206,8 +275,8 @@ const soalQuiz = [
     jawaban: {
       a: "Scissor kick",
       b: "Flutter kick",
-      c: "Butterfly kick",
-      d: "Frog kick"
+      c: "Frog kick",
+      d: "Butterfly kick"
     },
 
     benar: "b"
@@ -215,13 +284,111 @@ const soalQuiz = [
 
   {
     pertanyaan:
-      "Apa tujuan pemanasan sebelum berenang?",
+      "Posisi tubuh saat gaya bebas sebaiknya?",
 
     jawaban: {
-      a: "Melemaskan otot",
-      b: "Mengurangi fokus",
-      c: "Menghindari cedera",
-      d: "Mempercepat lelah"
+      a: "Vertikal",
+      b: "Miring",
+      c: "Horizontal",
+      d: "Membungkuk"
+    },
+
+    benar: "c"
+  },
+
+  {
+    pertanyaan:
+      "Tujuan pemanasan sebelum berenang adalah?",
+
+    jawaban: {
+      a: "Membuat cepat lelah",
+      b: "Mencegah cedera",
+      c: "Mengurangi napas",
+      d: "Memperlambat gerakan"
+    },
+
+    benar: "b"
+  },
+
+  {
+    pertanyaan:
+      "Alat bantu keselamatan saat belajar renang adalah?",
+
+    jawaban: {
+      a: "Pelampung",
+      b: "Topi",
+      c: "Sepatu",
+      d: "Sarung tangan"
+    },
+
+    benar: "a"
+  },
+
+  {
+    pertanyaan:
+      "Pernapasan gaya bebas dilakukan ke arah?",
+
+    jawaban: {
+      a: "Bawah",
+      b: "Depan",
+      c: "Samping",
+      d: "Atas"
+    },
+
+    benar: "c"
+  },
+
+  {
+    pertanyaan:
+      "Renang dapat meningkatkan?",
+
+    jawaban: {
+      a: "Kebugaran tubuh",
+      b: "Rasa takut air",
+      c: "Cedera",
+      d: "Kemalasan"
+    },
+
+    benar: "a"
+  },
+
+  {
+    pertanyaan:
+      "Bagian tubuh utama untuk dorongan gaya bebas adalah?",
+
+    jawaban: {
+      a: "Kaki dan tangan",
+      b: "Leher",
+      c: "Pinggang",
+      d: "Punggung"
+    },
+
+    benar: "a"
+  },
+
+  {
+    pertanyaan:
+      "Sikap kepala saat berenang gaya bebas adalah?",
+
+    jawaban: {
+      a: "Selalu ke atas",
+      b: "Menghadap dasar kolam",
+      c: "Menoleh belakang",
+      d: "Miring penuh"
+    },
+
+    benar: "b"
+  },
+
+  {
+    pertanyaan:
+      "Manfaat latihan renang secara rutin adalah?",
+
+    jawaban: {
+      a: "Menurunkan stamina",
+      b: "Membuat tubuh lemah",
+      c: "Meningkatkan kesehatan jantung",
+      d: "Mengurangi koordinasi"
     },
 
     benar: "c"
@@ -229,75 +396,193 @@ const soalQuiz = [
 
 ];
 
-// render soal
+
+// ========================================
+// RENDER QUIZ
+// ========================================
+
 function renderQuiz() {
+
+  const quizBox =
+    document.querySelector(".quiz-box");
+
+  if (!quizBox) return;
+
+  // selesai
+  if (nomorSoal >= soalQuiz.length) {
+
+    quizBox.innerHTML = `
+
+      <div class="quiz-finish">
+
+        <h2>🎉 Quiz Selesai!</h2>
+
+        <p>Skor akhir kamu</p>
+
+        <div class="final-score">
+          ${skor}
+        </div>
+
+        <button
+          class="btn btn-primary"
+          onclick="restartQuiz()">
+
+          Ulangi Quiz
+
+        </button>
+
+      </div>
+
+    `;
+
+    return;
+  }
 
   const q = soalQuiz[nomorSoal];
 
-  document.getElementById("question")
-    .innerText = q.pertanyaan;
+  const progress =
+    (nomorSoal / soalQuiz.length) * 100;
 
-  const buttons =
-    document.querySelectorAll(".quiz-option");
+  quizBox.innerHTML = `
 
-  ["a", "b", "c", "d"].forEach((opt, i) => {
+    <div class="quiz-top">
 
-    if (buttons[i]) {
-      buttons[i].innerText = q.jawaban[opt];
-    }
+      <div class="quiz-progress">
 
-  });
+        <div
+          class="quiz-progress-fill"
+          style="width:${progress}%">
+
+        </div>
+
+      </div>
+
+      <span class="quiz-counter">
+        ${nomorSoal + 1}/${soalQuiz.length}
+      </span>
+
+    </div>
+
+    <h2 class="quiz-question">
+      ${q.pertanyaan}
+    </h2>
+
+    <div class="quiz-options">
+
+      <button
+        data-answer="a"
+        onclick="checkAnswer('a')">
+
+        ${q.jawaban.a}
+
+      </button>
+
+      <button
+        data-answer="b"
+        onclick="checkAnswer('b')">
+
+        ${q.jawaban.b}
+
+      </button>
+
+      <button
+        data-answer="c"
+        onclick="checkAnswer('c')">
+
+        ${q.jawaban.c}
+
+      </button>
+
+      <button
+        data-answer="d"
+        onclick="checkAnswer('d')">
+
+        ${q.jawaban.d}
+
+      </button>
+
+    </div>
+
+    <div class="quiz-score">
+      ⭐ Skor : ${skor}
+    </div>
+
+  `;
 }
 
-// =========================
-// QUIZ BUTTON FIX
-// GANTI FUNCTION checkAnswer
-// =========================
+
+// ========================================
+// CHECK ANSWER
+// ========================================
 
 function checkAnswer(jawaban) {
 
-  const buttons = document.querySelectorAll(".quiz-box button");
+  const benar =
+    soalQuiz[nomorSoal].benar;
+
+  const buttons =
+    document.querySelectorAll(
+      ".quiz-options button"
+    );
 
   buttons.forEach(btn => {
     btn.disabled = true;
   });
 
-  if (jawaban === soalQuiz[nomorSoal].benar) {
+  // benar
+  if (jawaban === benar) {
+
     skor += 10;
+
   }
 
-  document.getElementById("score").innerText =
-    "Skor : " + skor;
+  // styling jawaban
+  buttons.forEach(btn => {
 
+    const answer =
+      btn.dataset.answer;
+
+    if (answer === benar) {
+
+      btn.classList.add("correct");
+
+    } else if (answer === jawaban) {
+
+      btn.classList.add("wrong");
+
+    }
+
+  });
+
+  // next question
   setTimeout(() => {
 
     nomorSoal++;
 
-    if (nomorSoal < soalQuiz.length) {
+    renderQuiz();
 
-      renderQuiz();
+  }, 1200);
 
-      buttons.forEach(btn => {
-        btn.disabled = false;
-      });
-
-    } else {
-
-      document.getElementById("question").innerText =
-        "Quiz Selesai 🎉";
-    }
-
-  }, 700);
 }
 
-// auto render first question
-window.addEventListener("DOMContentLoaded", () => {
 
-  if (document.getElementById("question")) {
-    renderQuiz();
-  }
+// ========================================
+// RESTART QUIZ
+// ========================================
 
-});
+function restartQuiz() {
+
+  nomorSoal = 0;
+  skor = 0;
+
+  renderQuiz();
+}
+
+
+// init quiz
+if (document.querySelector(".quiz-box")) {
+  renderQuiz();
+}
 
 
 // ========================================
@@ -310,6 +595,11 @@ let interval = null;
 
 function updateTimer() {
 
+  const timerEl =
+    document.getElementById("timer");
+
+  if (!timerEl) return;
+
   detik++;
 
   if (detik === 60) {
@@ -319,15 +609,18 @@ function updateTimer() {
 
   }
 
-  document.getElementById("timer").innerText =
+  timerEl.innerText =
     `${String(menit).padStart(2, "0")}:${String(detik).padStart(2, "0")}`;
+
 }
 
 function startTimer() {
 
   if (interval !== null) return;
 
-  interval = setInterval(updateTimer, 1000);
+  interval =
+    setInterval(updateTimer, 1000);
+
 }
 
 function stopTimer() {
@@ -344,8 +637,15 @@ function resetTimer() {
   detik = 0;
   menit = 0;
 
-  document.getElementById("timer")
-    .innerText = "00:00";
+  const timerEl =
+    document.getElementById("timer");
+
+  if (timerEl) {
+
+    timerEl.innerText = "00:00";
+
+  }
+
 }
 
 
@@ -355,6 +655,9 @@ function resetTimer() {
 
 window.addEventListener("DOMContentLoaded", () => {
 
+  // check pdfjs
+  if (typeof pdfjsLib === "undefined") return;
+
   const url = "pdf/E-Book.pdf";
 
   const canvas =
@@ -362,62 +665,83 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (!canvas) return;
 
-  const ctx = canvas.getContext("2d");
+  const ctx =
+    canvas.getContext("2d");
 
   let pdfDoc = null;
   let pageNum = 1;
   let scale = 1.2;
 
+  // render page
   function renderPage(num) {
 
-    pdfDoc.getPage(num).then(page => {
+    pdfDoc.getPage(num)
+    .then(page => {
 
       const viewport =
         page.getViewport({ scale });
 
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
+      canvas.height =
+        viewport.height;
+
+      canvas.width =
+        viewport.width;
 
       page.render({
+
         canvasContext: ctx,
         viewport
+
       });
 
-      document.getElementById("page-num")
+      document
+        .getElementById("page-num")
         .innerText = num;
+
     });
 
   }
 
-  pdfjsLib.getDocument(url).promise.then(pdf => {
+  // load pdf
+  pdfjsLib
+    .getDocument(url)
+    .promise
 
-    pdfDoc = pdf;
+    .then(pdf => {
 
-    document.getElementById("page-count")
-      .innerText = pdf.numPages;
+      pdfDoc = pdf;
 
-    renderPage(pageNum);
+      document
+        .getElementById("page-count")
+        .innerText = pdf.numPages;
 
-  });
+      renderPage(pageNum);
 
-  // prev page
+    });
+
+  // prev
   window.prevPage = function () {
 
-    if (pageNum <= 1) return;
+    if (!pdfDoc || pageNum <= 1) return;
 
     pageNum--;
 
     renderPage(pageNum);
+
   };
 
-  // next page
+  // next
   window.nextPage = function () {
 
-    if (pageNum >= pdfDoc.numPages) return;
+    if (
+      !pdfDoc ||
+      pageNum >= pdfDoc.numPages
+    ) return;
 
     pageNum++;
 
     renderPage(pageNum);
+
   };
 
   // zoom in
@@ -426,6 +750,7 @@ window.addEventListener("DOMContentLoaded", () => {
     scale += 0.2;
 
     renderPage(pageNum);
+
   };
 
   // zoom out
@@ -436,6 +761,7 @@ window.addEventListener("DOMContentLoaded", () => {
     scale -= 0.2;
 
     renderPage(pageNum);
+
   };
 
 });

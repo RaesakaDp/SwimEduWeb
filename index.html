@@ -452,56 +452,73 @@ TAMBAHKAN DI <head>
 
   </section>
 
-  <!-- ================= QUIZ ================= -->
-  <section id="quiz" class="quiz">
+<!-- ================= QUIZ DUOLINGO STYLE ================= -->
+<section id="quiz" class="quiz-section">
 
-    <div class="container">
+  <div class="container">
 
-      <div class="section-title">
+    <div class="section-title">
+      <h2>Quiz Interaktif</h2>
+      <p>Jawab pertanyaan dibawah ini </p>
+    </div>
 
-        <h2>
-          Quiz Interaktif
-        </h2>
+    <div class="quiz-container">
 
-        <p>
-          Uji pemahamanmu tentang
-          materi renang.
-        </p>
+      <!-- TOP -->
+      <div class="quiz-top">
+
+        <div class="quiz-progress">
+          <div id="quiz-progress-bar"></div>
+        </div>
+
+        <div class="quiz-score">
+          ⭐ <span id="score">0</span>
+        </div>
 
       </div>
 
-      <div class="quiz-box">
+      <!-- QUESTION -->
+      <div class="quiz-card">
 
-        <h3 id="question">
-          Apa fungsi teknik pernapasan
-          dalam gaya bebas?
-        </h3>
+        <span class="quiz-label">
+          Pertanyaan
+        </span>
 
-        <button onclick="checkAnswer('a')">
-          Menjaga ritme dan daya tahan
-        </button>
-
-        <button onclick="checkAnswer('b')">
-          Mempercepat lompatan
-        </button>
-
-        <button onclick="checkAnswer('c')">
-          Mengurangi gerakan kaki
-        </button>
-
-        <button onclick="checkAnswer('d')">
-          Mempermudah start
-        </button>
-
-        <h2 id="score">
-          Skor : 0
+        <h2 id="question">
+          Loading...
         </h2>
+
+        <!-- OPTIONS -->
+        <div class="quiz-options">
+
+          <button class="quiz-option" onclick="checkAnswer('a')">
+            Jawaban A
+          </button>
+
+          <button class="quiz-option" onclick="checkAnswer('b')">
+            Jawaban B
+          </button>
+
+          <button class="quiz-option" onclick="checkAnswer('c')">
+            Jawaban C
+          </button>
+
+          <button class="quiz-option" onclick="checkAnswer('d')">
+            Jawaban D
+          </button>
+
+        </div>
+
+        <!-- FEEDBACK -->
+        <div id="quiz-feedback"></div>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
   <!-- ================= STOPWATCH ================= -->
   <section id="timer-section">
@@ -588,19 +605,95 @@ FIX GALLERY HTML
 
 </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
+<!-- ================= FOOTER MODERN ================= -->
+<footer class="footer">
 
-    <div class="container">
+  <div class="container footer-container">
+
+    <!-- BRAND -->
+    <!-- <div class="footer-brand">
+      <h2>🏊 SwimEdu</h2>
 
       <p>
-        © 2026 SwimEdu —
-        Dibuat oleh RaesakaDp
+        Platform pembelajaran renang interaktif berbasis digital
+        untuk mendukung pembelajaran PJOK modern.
       </p>
+    </div> -->
 
+    <!-- MENU -->
+    <!-- <div class="footer-links">
+      <h3>Navigasi</h3>
+
+      <a href="#home">Home</a>
+      <a href="#materi">Materi</a>
+      <a href="#video">Video</a>
+      <a href="#ebook">E-Book</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#gallery">Galeri</a>
+    </div> -->
+
+<!-- ================= FOOTER MODERN ================= -->
+<footer class="footer">
+
+  <div class="container footer-container">
+
+    <!-- BRAND -->
+    <!-- <div class="footer-brand">
+      <h2>🏊 SwimEdu</h2>
+
+      <p>
+        Platform pembelajaran renang interaktif berbasis digital
+        untuk mendukung pembelajaran PJOK modern.
+      </p>
+    </div> -->
+
+    <!-- MENU -->
+    <div class="footer-links">
+      <h3>Navigasi</h3>
+
+      <a href="#home">Home</a>
+      <a href="#materi">Materi</a>
+      <a href="#video">Video</a>
+      <a href="#ebook">E-Book</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#gallery">Galeri</a>
     </div>
 
-  </footer>
+    <!-- KONTAK -->
+    <div class="footer-links">
+      <h3>Kontak</h3>
+
+      <p>Email: swimedu@gmail.com</p>
+      <p>Instagram: @swimedu</p>
+      <p>YouTube: SwimEdu Official</p>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <div class="footer-links">
+      <h3>Developer</h3>
+
+      <p>Developed by Raesaka Dwi</p>
+
+      <a 
+        href="https://raesakadp.github.io/porto/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="portfolio-link"
+      >
+        🌐 Lihat Portfolio
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>
+      © 2026 SwimEdu • Dibuat untuk Media Pembelajaran PJOK
+    </p>
+  </div>
+
+</footer>
 
   <!-- JS -->
   <script src="script.js"></script>

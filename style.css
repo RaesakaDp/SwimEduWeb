@@ -612,53 +612,168 @@ PDF VIEWER
 }
 
 /* =========================
-QUIZ
+QUIZ DUOLINGO STYLE
 ========================= */
 
-.quiz-box {
-  background: var(--surface);
+.quiz-section {
+  position: relative;
+}
 
-  border-radius: var(--radius);
-
-  padding: 30px;
-
-  max-width: 650px;
+.quiz-container {
+  max-width: 720px;
   margin: auto;
+}
+
+/* TOP */
+.quiz-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.quiz-progress {
+  flex: 1;
+  height: 14px;
+
+  background: var(--border);
+
+  border-radius: 999px;
+
+  overflow: hidden;
+}
+
+#quiz-progress-bar {
+  width: 0%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    #4ade80
+  );
+
+  border-radius: 999px;
+
+  transition: width 0.35s ease;
+}
+
+.quiz-score {
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+/* CARD */
+.quiz-card {
+  background: var(--surface);
 
   border: 1px solid var(--border);
 
+  border-radius: 28px;
+
+  padding: 40px;
+
   box-shadow: var(--shadow);
+
+  transition: 0.3s ease;
 }
 
-.quiz-box h3 {
-  margin-bottom: 20px;
+.quiz-label {
+  display: inline-flex;
+
+  margin-bottom: 16px;
+
+  padding: 8px 14px;
+
+  background: var(--primary-soft);
+
+  color: var(--primary);
+
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 700;
 }
 
-.quiz-box button {
+.quiz-card h2 {
+  font-size: 34px;
+  line-height: 1.3;
+
+  margin-bottom: 30px;
+}
+
+/* OPTIONS */
+.quiz-options {
+  display: grid;
+  gap: 16px;
+}
+
+.quiz-option {
   width: 100%;
 
-  margin-top: 12px;
+  padding: 18px 20px;
 
-  padding: 14px;
+  background: var(--surface);
 
-  border: none;
+  border: 2px solid var(--border);
 
-  border-radius: 12px;
+  border-radius: 18px;
 
-  background: var(--primary);
-  color: white;
+  text-align: left;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: var(--text);
 
   cursor: pointer;
 
   transition: 0.25s ease;
 }
 
-.quiz-box button:hover {
-  opacity: 0.92;
+.quiz-option:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
 }
 
-#score {
-  margin-top: 24px;
+.quiz-option.correct {
+  background: rgba(34,197,94,0.12);
+  border-color: #22c55e;
+  color: #16a34a;
+}
+
+.quiz-option.wrong {
+  background: rgba(239,68,68,0.12);
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+/* FEEDBACK */
+#quiz-feedback {
+  margin-top: 28px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .quiz-card {
+    padding: 28px;
+  }
+
+  .quiz-card h2 {
+    font-size: 26px;
+  }
+
+  .quiz-option {
+    padding: 16px;
+    font-size: 15px;
+  }
 }
 
 /* =========================
@@ -745,19 +860,129 @@ GALLERY
 }
 
 /* =========================
-FOOTER
+FOOTER MODERN APPLE STYLE
+GANTI FOOTER LAMA
 ========================= */
 
 .footer {
-  background: #0f172a;
+  margin-top: 80px;
+
+  background: linear-gradient(
+    to bottom,
+    #0f172a,
+    #020617
+  );
 
   color: white;
 
+  padding: 70px 5% 30px;
+
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 40px;
+}
+
+.footer-brand h2 {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.footer-brand p {
+  color: #94a3b8;
+  line-height: 1.8;
+}
+
+.footer-links h3 {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.footer-links a,
+.footer-links p {
+  display: block;
+
+  color: #94a3b8;
+
+  text-decoration: none;
+
+  margin-bottom: 12px;
+
+  transition: 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+
   text-align: center;
+}
 
-  padding: 40px 5%;
+.footer-bottom p {
+  color: #64748b;
+  font-size: 14px;
+}
 
-  margin-top: 70px;
+/* DARK MODE FIX */
+body.dark .footer {
+  background: linear-gradient(
+    to bottom,
+    #020617,
+    #000000
+  );
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .footer {
+    padding: 50px 5% 25px;
+  }
+
+  .footer-container {
+    gap: 30px;
+  }
+
+  .footer-brand h2 {
+    font-size: 24px;
+  }
+}
+
+/* PORTFOLIO BUTTON */
+.portfolio-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 10px;
+
+  padding: 12px 16px;
+
+  background: rgba(255,255,255,0.08);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 12px;
+
+  color: white !important;
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.portfolio-link:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
 }
 
 /* =========================
